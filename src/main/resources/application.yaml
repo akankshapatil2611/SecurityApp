@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: SecurityApp
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/springSecurity1
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  secretKey: jksdhfhuer839319jehfjhfhavhagvdagvdsbhishfiy3y932
+
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
