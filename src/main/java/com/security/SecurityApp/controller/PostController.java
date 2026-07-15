@@ -3,6 +3,7 @@ package com.security.SecurityApp.controller;
 import com.security.SecurityApp.dto.PostDTO;
 import com.security.SecurityApp.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,12 @@ public class PostController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('USER')")
     public PostDTO createNewPost(@RequestBody PostDTO inputPost) {
         return postService.createNewPost(inputPost);
     }
 
+    @DeleteMapping("/{postId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void deletePost(@PathVariable Long postId) {  }
 }

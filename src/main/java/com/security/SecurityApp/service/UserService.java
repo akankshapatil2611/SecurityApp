@@ -2,6 +2,7 @@ package com.security.SecurityApp.service;
 
 import com.security.SecurityApp.dto.UserDto;
 import com.security.SecurityApp.dto.signupDto;
+import com.security.SecurityApp.entity.Role.UserRole;
 import com.security.SecurityApp.entity.User;
 import com.security.SecurityApp.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -34,6 +35,7 @@ public class UserService implements UserDetailsService {
                 .name(request.name())
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
+                .role(UserRole.USER)
                 .build());
         return modelMapper.map(saveduser, UserDto.class);
     }

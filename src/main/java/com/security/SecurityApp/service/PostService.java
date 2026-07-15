@@ -30,6 +30,7 @@ public class PostService{
 
     public PostDTO createNewPost(PostDTO inputPost) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info("user {}", user.getName());
         PostEntity postEntity = modelMapper.map(inputPost, PostEntity.class);
         return modelMapper.map(postRepository.save(postEntity), PostDTO.class);
     }
@@ -37,7 +38,7 @@ public class PostService{
     public PostDTO getPostById(Long postId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        log.info("user {}", user);
+        log.info("user {}", user.getName());
 
         PostEntity postEntity = postRepository
                 .findById(postId)
